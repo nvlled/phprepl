@@ -1,0 +1,4 @@
+<?php
+foreach(range(1,30) as $i)
+    echo str_repeat("-", $i) . "Hello, world<br>";
+?>
