@@ -23,14 +23,14 @@ $isExisting = $name && strlen($script) > 0;
     <span class="msg"></span>
 </form>
 
-[<a href="browse.php">browse scripts</a>]
+<em>Note: Wrap the php code in php tags</em>
 <form name="eval" method="post">
   <br>
   <textarea rows="0" name="cmd"><?=$script?></textarea>
   <div id="editor" style=""></div>
   <span class="drag"></span>
   <br><input type="submit" name="action" value="execute"/> 
-  <span>Note: Wrap the php code in php tags</span>
+  [<a href='run.php?_=<?=$name?>'>run script in a separate page</a> (Do this when the script uses forms)]
   <img class="spinner" src="spinner.gif" />
 </form>
 <h3>output</h3>
