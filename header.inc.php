@@ -1,6 +1,7 @@
 <html>
 <head>
-    <link rel="stylesheet" href="site.css" />
+    <link rel="stylesheet" href="resources/site.css" />
+    <title>PHP repl</title>
 </head>
 <body>
 <h1 class="site"><a href="index.php">PHP REPL</a></h1>

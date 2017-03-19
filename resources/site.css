@@ -1,0 +1,33 @@
+h1.site {
+    float: left;
+}
+h1.site a {
+    text-decoration: none;
+    color: orange;
+    background-color: #222;
+}
+
+nav.site {
+    float: left;
+    display: inline
+}
+
+nav.site ul {
+    padding-left: 10px;
+}
+nav.site li {
+    display: inline;
+}
+
+nav.site + * {
+    clear: both;
+}
+
+div.article {
+    width: 700px;
+    font-size: 17px;
+}
+div.article p {
+    line-height: 1.5;
+}
+

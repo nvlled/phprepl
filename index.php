@@ -1,5 +1,5 @@
 <?php include "header.inc.php" ?>
-<link rel="stylesheet" href="editor.css" />
+<link rel="stylesheet" href="resources/editor.css" />
 <?php
 require_once "common.php";
 
@@ -19,7 +19,7 @@ $isExisting = $name && strlen($script) > 0;
         value="<?=$name?>"/>
     <input class="" type="submit" name="action" value="save script" />
     <input type="hidden" name="existing" value="<?=$isExisting?1:0?>" />
-    <img class="spinner" src="spinner.gif" />
+    <img class="spinner" src="resources/spinner.gif" />
     <span class="msg"></span>
 </form>
 
@@ -27,11 +27,11 @@ $isExisting = $name && strlen($script) > 0;
 <form name="eval" method="post">
   <br>
   <textarea rows="0" name="cmd"><?=$script?></textarea>
-  <div id="editor" style=""></div>
-  <span class="drag"></span>
   <br><input type="submit" name="action" value="execute"/> 
+  <?php if ($isExisting) { ?>
   [<a href='run.php?_=<?=$name?>'>run script in a separate page</a> (Do this when the script uses forms)]
-  <img class="spinner" src="spinner.gif" />
+  <?php } ?>
+  <img class="spinner" src="resources/spinner.gif" />
 </form>
 <h3>output</h3>
 <hr>
@@ -41,8 +41,19 @@ $isExisting = $name && strlen($script) > 0;
 
 ?>
 
-<script src="monaco-editor/min/vs/loader.js"></script>
-<script src="resizer.js"></script>
-<script src="repl.js"></script>
+<script src="resources/cm/codemirror.js"></script>
+<script src="resources/cm/codemirror.js"></script>
+<script src="resources/cm/matchbrackets.js"></script>
+<script src="resources/cm/htmlmixed.js"></script>
+<script src="resources/cm/xml.js"></script>
+<script src="resources/cm/javascript.js"></script>
+<script src="resources/cm/clike.js"></script>
+
+<script src="resources/cm/php.js"></script>
+<link rel="stylesheet" href="resources/cm/codemirror.css" />
+<link rel="stylesheet" href="resources/cm/zenburn.css" />
+
+<script src="resources/repl.js"></script>
 
 <?php include "footer.inc.php" ?>
+
