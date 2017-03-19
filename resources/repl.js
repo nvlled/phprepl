@@ -39,6 +39,7 @@ evalForm.onsubmit = function(e) {
     evalBtn.disabled = true;
     e.preventDefault();
 
+    codemirror.save();
     var code = bufferNode.value.trim();
     bufferNode.textContent = code;
     remoteEval(code, function(e) {
@@ -69,6 +70,7 @@ saveForm.onsubmit = function(e) {
     saveBtn.disabled = true;
 
     e.preventDefault();
+    codemirror.save();
     var code = bufferNode.value.trim();
     var formData = new FormData(saveForm);
     var scriptName = formData.get("name");
@@ -85,7 +87,9 @@ saveForm.onsubmit = function(e) {
     function save(onload) {
         var req = new XMLHttpRequest();
         req.open("POST", "save.php");
-        req.onload = onload;
+        req.onload = function() {
+            onload(req.responseText);
+        }
         req.send(formData);
     }
 
@@ -93,9 +97,10 @@ saveForm.onsubmit = function(e) {
     var data = {name: scriptName};
 
     if (isExisting) {
-        save(function() {
+        save(function(resp) {
             saveSpinner.style.display = "none";
             saveBtn.disabled = false;
+            msg.textContent = resp;
         });
     } else {
         request("POST", "exists.php", data,

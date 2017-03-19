@@ -14,9 +14,7 @@ $isExisting = $name && strlen($script) > 0;
 
 <form name="save" method="post">
     script name: 
-    <input type="text" name="name" 
-        <?=$isExisting?"readonly":""?>
-        value="<?=$name?>"/>
+    <input type="text" name="name" value="<?=$name?>"/>
     <input class="" type="submit" name="action" value="save script" />
     <input type="hidden" name="existing" value="<?=$isExisting?1:0?>" />
     <img class="spinner" src="resources/spinner.gif" />
@@ -37,9 +35,6 @@ $isExisting = $name && strlen($script) > 0;
 <hr>
 <div id="output">
 </div>
-<?php
-
-?>
 
 <script src="resources/cm/codemirror.js"></script>
 <script src="resources/cm/codemirror.js"></script>

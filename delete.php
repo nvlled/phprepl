@@ -10,6 +10,10 @@ if (! file_exists($filename)) {
     die("script does not exist: $scriptName");
 } 
 
+if (! ownsScript($scriptName)) {
+    die("access denied");
+}
+
 $action = @$_REQUEST["action"];
 if ($action == "yes") {
     unlink($filename);
@@ -18,7 +22,6 @@ if ($action == "yes") {
 } else if ($action == "no") {
     header("location: index.php?name=".$scriptName);
 }
-var_dump($_SERVER["REQUEST_URI"]);
 ?>
 
 <h2>Delete script <?=$scriptName?>?</h2>
@@ -27,4 +30,3 @@ var_dump($_SERVER["REQUEST_URI"]);
     <input type="submit" name="action" value="yes" />
     <input type="submit" name="action" value="no" />
 </form>
-
