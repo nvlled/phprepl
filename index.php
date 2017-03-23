@@ -15,6 +15,7 @@ $isExisting = $name && strlen($script) > 0;
 <form name="save" method="post">
     script name: 
     <input type="text" name="name" value="<?=$name?>"/>
+    <input type="hidden" name="original-name" value="<?=$name?>"/>
     <input class="" type="submit" name="action" value="save script" />
     <input type="hidden" name="existing" value="<?=$isExisting?1:0?>" />
     <img class="spinner" src="resources/spinner.gif" />

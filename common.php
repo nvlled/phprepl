@@ -10,6 +10,8 @@ function getSessionScripts() {
 }
 
 function ownsScript($name) {
+    if (@$_SESSION["admin"])
+        return true;
     $scripts = getSessionScripts();
     return !!@$scripts[$name];
 }

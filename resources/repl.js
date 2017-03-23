@@ -75,6 +75,8 @@ saveForm.onsubmit = function(e) {
     var formData = new FormData(saveForm);
     var scriptName = formData.get("name");
     var msg = saveForm.querySelector(".msg");
+    var originalName = saveForm.querySelector("input[name=original-name]");
+
     formData.append("script", code);
 
     if (scriptName.trim() == "" || code.trim() == "") {
@@ -96,7 +98,7 @@ saveForm.onsubmit = function(e) {
     var nameInput = saveForm.querySelector("input[name=name]");
     var data = {name: scriptName};
 
-    if (isExisting) {
+    if (isExisting && originalName.value.trim() == scriptName.trim()) {
         save(function(resp) {
             saveSpinner.style.display = "none";
             saveBtn.disabled = false;

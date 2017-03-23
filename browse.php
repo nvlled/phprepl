@@ -9,8 +9,6 @@ $iterator = new RecursiveIteratorIterator($dir_iterator, RecursiveIteratorIterat
 // could use CHILD_FIRST if you so wish
 //
 
-$ownedScripts = getSessionScripts();
-
 $count = 0;
 echo "<table>";
 foreach ($iterator as $file) {
@@ -25,7 +23,7 @@ foreach ($iterator as $file) {
     echo "<td class='script'><a class='xlscript' href='index.php?name=$name'>";
     echo htmlspecialchars($name);
     echo "</a></td>";
-    if (@$ownedScripts[$name])
+    if (ownsScript($name))
         echo "<td>[<a class='del' href='delete.php?name=$name'>delete</a>]</td>";
     echo "</tr>";
 }
